@@ -51,7 +51,7 @@ $ supdate
 ### ⚡ One-liner (recommended)
 
 ```bash
-curl -fsSL https://github.com/sameertiruwa1010/NyapuShell/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sameertiruwa1010/NyapuShell/main/install.sh | bash
 ```
 
 Then restart your terminal or run:
