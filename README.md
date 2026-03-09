@@ -121,7 +121,7 @@ No arguments needed. Each command instantly prints a clean, numbered reference.
 
 ## ➕ Adding Your Own Command
 
-Open `custom-commands.sh` and add a new function:
+Open `nyapushell.sh` and add a new function:
 
 ```bash
 smycommand() {
@@ -183,5 +183,5 @@ git push origin feature/add-kubectl-commands
 
 ---
 
-> *"Ek palta install gara, hamesha kaam aaucha."* 🇳🇵
+> *"Ek palta install gara, sadhai  kaam aaucha."* 🇳🇵
 > *(Install it once, it helps you forever.)*
