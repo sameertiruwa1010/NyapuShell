@@ -69,7 +69,8 @@ source ~/.zshrc    # for zsh
 
 ```bash
 git clone https://github.com/sameertiruwa1010/NyapuShell.git
-cd dev-shortcuts
+cd NyapuShell
+
 ```
 
 **2. Make the script executable**
@@ -82,11 +83,11 @@ chmod +x nyapushell.sh
 
 ```bash
 # For Bash
-echo 'source ~/dev-shortcuts/nyapushell.sh' >> ~/.bashrc
+echo 'source ~/NyapuShell/nyapushell.sh' >> ~/.bashrc
 source ~/.bashrc
 
 # For Zsh
-echo 'source ~/dev-shortcuts/nyapushell.sh' >> ~/.zshrc
+echo 'source ~/NyapuShell/nyapushell.sh' >> ~/.zshrc
 source ~/.zshrc
 ```
 
