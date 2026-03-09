@@ -7,24 +7,9 @@
 [![Platform: Linux](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-blue)](https://www.linux.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-Instead of memorizing dozens of commands, you can simply type short commands like: supdate,sgit,sdocker,ssshand get a clean, readable cheat sheet directly in your terminal.
+Instead of memorizing dozens of commands, you can simply type short commands like: supdate,sgit,sdocker,sssh and get a clean, readable cheat sheet directly in your terminal.
 
 NyapuShell is a lightweight collection of useful Bash helper commands designed for developers and DevOps engineers. It provides quick access to common Linux, Git, Docker, Node.js, networking, and system management commands with simple shortcuts and helpful explanations.
-
-echo ""
-echo -e "${BLUE}${BOLD}"
-echo "  ███╗   ██╗██╗   ██╗ █████╗ ██████╗ ██╗   ██╗"
-echo "  ████╗  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗██║   ██║"
-echo "  ██╔██╗ ██║ ╚████╔╝ ███████║██████╔╝██║   ██║"
-echo "  ██║╚██╗██║  ╚██╔╝  ██╔══██║██╔═══╝ ██║   ██║"
-echo "  ██║ ╚████║   ██║   ██║  ██║██║     ╚██████╔╝"
-echo "  ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝      ╚═════╝ "
-echo -e "${NC}"
-echo -e "${CYAN}  Bash command cheat sheets for developers 🇳🇵${NC}"
-echo -e "${CYAN}  github.com/sameertiruwa1010/NyapuShell${NC}"
-echo ""
-echo -e "  ${BLUE}────────────────────────────────────────────────${NC}"
-echo ""
 
 ## Preview
 
