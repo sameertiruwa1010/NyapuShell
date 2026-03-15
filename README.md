@@ -174,7 +174,7 @@ git push origin feature/add-kubectl-commands
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Author.
 
 **Sameer Tiruwa**
 - GitHub: [@sameertiruwa1010](https://github.com/sameertiruwa1010)
