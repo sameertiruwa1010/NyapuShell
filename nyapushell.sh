@@ -901,7 +901,7 @@ shelp() {
   
     echo -e "   ${GREEN}sgit${NC}          Git workflow"
     echo -e "   ${GREEN}sgitb${NC}         Git Branches"
-    echo -e "   ${GREEN}sgitCollab${NC}    Git Collaborations"
+    echo -e "   ${GREEN}sgitcollab${NC}    Git Collaborations"
     echo -e "   ${GREEN}sgitl${NC}         Git Logs"
     echo -e "   ${GREEN}sgitadv${NC}   Git Advanced"
     echo -e "   ${GREEN}snode${NC}         Node.js & npm"

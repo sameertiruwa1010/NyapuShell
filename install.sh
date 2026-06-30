@@ -52,7 +52,7 @@ else
 fi
 
 # ── Step 2: Download ──────────────────────────
-COMMANDS_URL="https://raw.githubusercontent.com/sameertiruwa1010/NyapuShell/feature-branch/nyapushell.sh "
+COMMANDS_URL="https://raw.githubusercontent.com/sameertiruwa1010/NyapuShell/main/nyapushell.sh"
 COMMANDS_FILE="$HOME/bin/nyapushell"
 
 step "Downloading NyapuShell v2.0.0..."
