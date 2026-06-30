@@ -169,6 +169,158 @@ sgit() {
     print_tip "git reset HEAD~1 — last commit undo (changes keep garxa)"
 }
 
+
+# ============================================
+# sgitb — Git Branch
+# ============================================
+sgitb() {
+    local count=$(validate_count "$1" 5 20)
+    print_header "Git Branch" $count
+
+    local commands=(
+        "git branch                                 # local branches list"
+        "git branch -a                               # local + remote branches list"
+        "git branch -r                               # remote branches matra"
+        "git branch new-branch                       # naya branch create (switch hudaina)"
+        "git checkout -b feature/branch               # naya branch create + switch"
+        "git switch -c feature/branch                 # naya branch (modern way)"
+        "git switch main                              # branch switch garne (modern way)"
+        "git checkout main                            # branch switch garne (old way)"
+        "git branch -d feature/branch                 # branch delete (merged matra)"
+        "git branch -D feature/branch                 # branch force delete"
+        "git push origin --delete feature/branch       # remote branch delete"
+        "git branch -m old-name new-name               # current branch rename"
+        "git branch -m new-name                        # current branch rename (in place)"
+        "git branch --merged                           # main ma merge bhaisakeko branches"
+        "git branch --no-merged                        # merge nabhako branches"
+        "git push -u origin feature/branch              # branch push + tracking set"
+        "git branch -vv                                # tracking branches sanga last commit"
+        "git checkout --track origin/feature/branch     # remote branch lai local ma track"
+        "git branch -f main HEAD~1                      # branch lai arko commit ma force point"
+        "git rev-parse --abbrev-ref HEAD                # current branch name matra print"
+    )
+
+    for ((i=0; i<count; i++)); do
+        echo -e "  ${YELLOW}$((i+1)).${NC} ${commands[$i]}"
+    done
+
+    print_tip "git branch --sort=-committerdate — recent activity anusar branches sort"
+}
+
+# ============================================
+# sgitcollab — Git Collaboration
+# ============================================
+sgitcollab() {
+    local count=$(validate_count "$1" 5 20)
+    print_header "Git Collaboration" $count
+
+    local commands=(
+        "git clone https://github.com/user/repo         # repository clone"
+        "git remote -v                                   # remote URLs herna"
+        "git remote add origin <url>                      # remote add garne"
+        "git remote set-url origin <new-url>               # remote URL change garne"
+        "git fetch origin                                  # remote bata changes fetch (merge nagari)"
+        "git pull origin main                              # fetch + merge"
+        "git pull --rebase origin main                     # fetch + rebase (clean history)"
+        "git push origin main                              # local changes remote ma push"
+        "git push origin feature/branch                    # specific branch push"
+        "git push --force-with-lease                       # safe force push (collab ko lagi)"
+        "git fork                                           # (GitHub CLI) repo fork garne — gh repo fork"
+        "gh pr create --base main --head feature/branch     # pull request create (GitHub CLI)"
+        "gh pr list                                          # open PRs list"
+        "gh pr checkout 42                                   # PR number 42 lai local ma checkout"
+        "gh pr review --approve                              # PR approve garne"
+        "git cherry-pick <commit-hash>                       # arko branch ko specific commit lyaune"
+        "git blame <file>                                    # kasle kun line edit garyo herna"
+        "git diff origin/main..HEAD                          # local ra remote main bich difference"
+        "git request-pull origin/main <repo-url>             # pull request summary generate (CLI)"
+        "git push origin --tags                              # sabai tags remote ma push"
+    )
+
+    for ((i=0; i<count; i++)); do
+        echo -e "  ${YELLOW}$((i+1)).${NC} ${commands[$i]}"
+    done
+
+    print_tip "gh pr view --web — current branch ko PR lai browser ma kholne"
+}
+
+# ============================================
+# sgitl — Git Log
+# ============================================
+sgitl() {
+    local count=$(validate_count "$1" 5 20)
+    print_header "Git Log" $count
+
+    local commands=(
+        "git log                                          # full commit history"
+        "git log --oneline                                # ek line ma compact history"
+        "git log --oneline --graph --all                  # visual branch graph"
+        "git log -p                                       # commit sanga diff dekhaune"
+        "git log -n 5                                     # last 5 commits matra"
+        "git log --author='name'                          # specific author ko commits"
+        "git log --since='2 weeks ago'                    # date range anusar commits"
+        "git log --until='yesterday'                      # specific date samma ko commits"
+        "git log --grep='fix'                             # commit message ma keyword search"
+        "git log -- <file>                                # specific file ko history matra"
+        "git log --stat                                   # changed files ra line count sahit"
+        "git log --follow <file>                          # rename bhaye pani file history track"
+        "git log --diff-filter=A -- <file>                # file kahile add bhayo herna"
+        "git shortlog -sn                                 # author wise commit count summary"
+        "git log --pretty=format:'%h %an %ar %s'           # custom format ma log"
+        "git reflog                                        # HEAD ko sabai movement history"
+        "git log branch1..branch2                          # branch2 ma cha tara branch1 ma nai"
+        "git log --merges                                  # merge commits matra dekhaune"
+        "git log --no-merges                               # merge commits baad ko history"
+        "git show <commit-hash>                            # specific commit ko full detail"
+    )
+
+    for ((i=0; i<count; i++)); do
+        echo -e "  ${YELLOW}$((i+1)).${NC} ${commands[$i]}"
+    done
+
+    print_tip "git log -S'searchterm' — code ma specific text kahile add/remove bhayo herna"
+}
+
+# ============================================
+# sgitadvance — Git Advanced
+# ============================================
+sgitadv() {
+    local count=$(validate_count "$1" 5 20)
+    print_header "Git Advanced" $count
+
+    local commands=(
+        "git rebase -i HEAD~3                              # last 3 commits interactive rebase (squash/edit)"
+        "git rebase --abort                                # rebase cancel garne"
+        "git rebase --continue                             # conflict resolve pachi rebase continue"
+        "git reset --soft HEAD~1                            # commit undo, changes staged rakhne"
+        "git reset --mixed HEAD~1                           # commit undo, changes unstaged rakhne"
+        "git reset --hard HEAD~1                            # commit + changes sabai discard"
+        "git revert <commit-hash>                           # naya commit banayera purano undo"
+        "git bisect start                                   # bug finding binary search start"
+        "git bisect good/bad                                # current commit good/bad mark garne"
+        "git stash                                          # changes temporarily store"
+        "git stash pop                                      # stashed changes restore + delete"
+        "git stash list                                     # sabai stashes list"
+        "git stash apply stash@{0}                          # specific stash apply (delete nagari)"
+        "git worktree add ../path branch-name               # arko folder ma branch separately checkout"
+        "git submodule add <repo-url>                       # repo lai submodule ko रूपमा add"
+        "git submodule update --init --recursive            # submodules sabai fetch/update"
+        "git filter-branch --tree-filter 'rm -f file'        # history bata file purai hataune"
+        "git gc --aggressive                                # repo optimize + garbage collect"
+        "git fsck                                           # repo corruption check garne"
+        "git cherry -v main                                 # main ma merge nabhako commits list"
+    )
+
+    for ((i=0; i<count; i++)); do
+        echo -e "  ${YELLOW}$((i+1)).${NC} ${commands[$i]}"
+    done
+
+    print_tip "git rebase -i --autosquash — fixup!/squash! commits lai auto organize garne"
+}
+
+
+
+
 # ============================================
 # sdocker — Docker
 # ============================================
@@ -278,9 +430,9 @@ sapt() {
 }
 
 # ============================================
-# sperm — File Permissions
+# sper — File Permissions
 # ============================================
-sperm() {
+sper() {
     local count=$(validate_count "$1" 5 10)
     print_header "File Permissions" $count
 
@@ -298,7 +450,7 @@ sperm() {
     )
 
     for ((i=0; i<count; i++)); do
-        echo -e "  ${yellow}$((i+1)).${NC} ${commands[$i]}"
+        echo -e "  ${yellow}$((i+1)).${NC}ommands[$i]}"
     done
 
     print_tip "4=read 2=write 1=execute. 755 = owner(rwx) group(r-x) others(r-x)"
@@ -421,7 +573,7 @@ sterraform() {
 
     local commands=(
         "terraform init                             # provider plugins install"
-        "terraform plan                             # changes preview"
+        "terrafolan                             # changes preview"
         "terraform apply -auto-approve              # infrastructure apply"
         "terraform destroy -auto-approve            # infrastructure destroy"
         "terraform fmt && terraform validate        # format + validate"
@@ -444,7 +596,7 @@ sterraform() {
 # ============================================
 snginx() {
     local count=$(validate_count "$1" 5 10)
-    print_header "Nginx" $count
+  int_header "Nginx" $count
 
     local commands=(
         "sudo nginx -t                              # config syntax test"
@@ -453,7 +605,7 @@ snginx() {
         "sudo systemctl status nginx               # status check"
         "sudo tail -f /var/log/nginx/error.log     # error log watch"
         "sudo tail -f /var/log/nginx/access.log    # access log watch"
-        "sudo ln -s /etc/nginx/sites-available/app /etc/nginx/sites-enabled/ # site enable"
+        "sudo ln -s /etc/nginx/sites-ailable/app /etc/nginx/sites-enabled/ # site enable"
         "sudo certbot --nginx -d domain.com        # SSL certificate install"
         "sudo certbot renew --dry-run              # SSL renewal test"
         "nginx -v                                  # version check"
@@ -478,7 +630,7 @@ slinux() {
         "df -h                                      # disk usage"
         "du -sh /var/log/*                          # directory sizes"
         "free -h                                    # RAM usage"
-        "uptime                                     # system uptime + load"
+        "uptime                                     # stem uptime + load"
         "who && w                                   # logged in users"
         "last -n 10                                 # last 10 logins"
         "lsblk                                      # block devices list"
@@ -504,7 +656,7 @@ sfirewall() {
         "sudo ufw status verbose                    # firewall status"
         "sudo ufw enable                            # firewall enable"
         "sudo ufw disable                           # firewall disable"
-        "sudo ufw allow 22/tcp                      # SSH allow"
+    "sudo ufw allow 22/tcp                      # SSH allow"
         "sudo ufw allow 80,443/tcp                  # HTTP/HTTPS allow"
         "sudo ufw deny 3306                         # MySQL port block"
         "sudo ufw allow from 192.168.1.0/24         # subnet allow"
@@ -529,14 +681,14 @@ snmap() {
 
     local commands=(
         "nmap 192.168.1.1                           # basic host scan"
-        "nmap -p 80,443,22 target.com               # specific ports scan"
+        "nmap -p 80,443,22 target.com           # specific ports scan"
         "nmap -p- target.com                        # all 65535 ports scan"
         "nmap -sV target.com                        # service version detect"
         "nmap -O target.com                         # OS detection"
         "nmap -A target.com                         # aggressive scan (OS+ver+script)"
         "nmap -sn 192.168.1.0/24                    # ping sweep — live hosts"
         "nmap --script vuln target.com              # vulnerability scan"
-        "nmap -sU -p 53,161 target.com              # UDP scan"
+        "nmap - -p 53,161 target.com              # UDP scan"
         "nmap -oN output.txt target.com             # output file ma save"
     )
 
@@ -552,7 +704,7 @@ snmap() {
 # ============================================
 shacking() {
     local count=$(validate_count "$1" 5 10)
-    print_header "Ethical Hacking Tools" $count
+    print_heer "Ethical Hacking Tools" $count
 
     local commands=(
         "nmap -sV --script vuln target              # vulnerability scan"
@@ -574,7 +726,7 @@ shacking() {
     print_tip "ethical hacking — only use on systems you own or have written permission"
 }
 
-# ============================================
+# ==========================================
 # stesting — Testing Tools
 # ============================================
 stesting() {
@@ -585,7 +737,7 @@ stesting() {
         "curl -X GET https://api.example.com        # GET request"
         "curl -X POST -d '{\"key\":\"val\"}' -H 'Content-Type: application/json' URL # POST request"
         "curl -X PUT -d @data.json URL              # PUT request with file"
-        "ab -n 1000 -c 10 http://target/            # Apache bench load test"
+        "ab -n 1000 -c 10 http://target/            # Apae bench load test"
         "wrk -t4 -c100 -d30s http://target/         # advanced load test"
         "wget --spider http://target.com            # link check"
         "python3 -m pytest tests/ -v                # pytest verbose"
@@ -611,7 +763,7 @@ sansible() {
     local commands=(
         "ansible all -m ping                        # all hosts ping"
         "ansible all -m command -a 'uptime'         # command run on all hosts"
-        "ansible-playbook playbook.yml              # playbook run"
+        "ble-playbook playbook.yml              # playbook run"
         "ansible-playbook playbook.yml --check      # dry run"
         "ansible-playbook playbook.yml -v           # verbose run"
         "ansible-vault encrypt secrets.yml          # file encrypt"
@@ -636,8 +788,7 @@ saws() {
     print_header "AWS CLI" $count
 
     local commands=(
-        "aws configure                              # credentials setup"
-        "aws s3 ls                                  # S3 buckets list"
+        "aws configure                              # credentials setup      "aws s3 ls                                  # S3 buckets list"
         "aws s3 cp file.txt s3://bucket/            # file S3 ma upload"
         "aws s3 sync ./dir s3://bucket/dir          # directory sync"
         "aws ec2 describe-instances                 # EC2 instances list"
@@ -660,7 +811,7 @@ saws() {
 # ============================================
 scron() {
     local count=$(validate_count "$1" 5 10)
-    print_header "Cron Jobs" $count
+    print_hr "Cron Jobs" $count
 
     local commands=(
         "crontab -e                                 # current user crontab edit"
@@ -683,7 +834,7 @@ scron() {
 }
 
 # ============================================
-# slog — Log Analysis
+# slog — Loalysis
 # ============================================
 slog() {
     local count=$(validate_count "$1" 5 10)
@@ -715,13 +866,13 @@ slog() {
 shelp() {
     echo -e ""
     echo -e "${CYAN}${BOLD}╔══════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${CYAN}${BOLD}║           NyapuShell v$VERSION — Linux Command Helper            ║${NC}"
+    echo -e "${CYAN}${BOLD}║           NyapuShell v$VERSION —ommand Helper            ║${NC}"
     echo -e "${CYAN}${BOLD}╚══════════════════════════════════════════════════════════════╝${NC}"
     echo -e "  ${WHITE}Author :${NC} Sameer Tiruwa (@sameertiruwa1010)"
     echo -e "  ${WHITE}Usage  :${NC} <command> [1-10]   e.g. ${YELLOW}supdate 8${NC} or ${YELLOW}snmap 10${NC}"
     echo -e ""
     echo -e "  ${CYAN}${BOLD}System & Package${NC}"
-    echo -e "   ${GREEN}supdate${NC}       System update (apt)"
+  echo -e "   ${GREEN}supdate${NC}       System update (apt)"
     echo -e "   ${GREEN}sapt${NC}          APT package management"
     echo -e "   ${GREEN}slinux${NC}        Linux system info + disk + RAM"
     echo -e "   ${GREEN}sprocess${NC}      Process management"
@@ -729,7 +880,7 @@ shelp() {
     echo -e "   ${GREEN}scron${NC}         Cron job syntax + management"
     echo -e "   ${GREEN}slog${NC}          Log analysis + grep tricks"
     echo -e "   ${GREEN}sservice${NC}      Systemctl service management"
-    echo -e "   ${GREEN}sperm${NC}         File permissions"
+    echo -e "   ${GREEN}sper${NC}         File permissions"
     echo -e ""
     echo -e "  ${CYAN}${BOLD}Network & Security${NC}"
     echo -e "   ${GREEN}snetwork${NC}      Network troubleshooting"
@@ -747,7 +898,12 @@ shelp() {
     echo -e "   ${GREEN}saws${NC}          AWS CLI"
     echo -e ""
     echo -e "  ${CYAN}${BOLD}Development${NC}"
+  
     echo -e "   ${GREEN}sgit${NC}          Git workflow"
+    echo -e "   ${GREEN}sgitb${NC}         Git Branches"
+    echo -e "   ${GREEN}sgitcollab${NC}    Git Collaborations"
+    echo -e "   ${GREEN}sgitl${NC}         Git Logs"
+    echo -e "   ${GREEN}sgitadv${NC}   Git Advanced"
     echo -e "   ${GREEN}snode${NC}         Node.js & npm"
     echo -e "   ${GREEN}spython${NC}       Python & pip"
     echo -e "   ${GREEN}stesting${NC}      Testing + load testing tools"
@@ -781,3 +937,4 @@ else
         fi
     fi
 fi
+
