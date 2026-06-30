@@ -903,7 +903,7 @@ shelp() {
     echo -e "   ${GREEN}sgitb${NC}         Git Branches"
     echo -e "   ${GREEN}sgitcollab${NC}    Git Collaborations"
     echo -e "   ${GREEN}sgitl${NC}         Git Logs"
-    echo -e "   ${GREEN}sgitadv${NC}   Git Advanced"
+    echo -e "   ${GREEN}sgitadv${NC}       Git Advanced"
     echo -e "   ${GREEN}snode${NC}         Node.js & npm"
     echo -e "   ${GREEN}spython${NC}       Python & pip"
     echo -e "   ${GREEN}stesting${NC}      Testing + load testing tools"
